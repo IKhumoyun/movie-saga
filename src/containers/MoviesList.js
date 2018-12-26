@@ -48,6 +48,7 @@ const mapStateToProps = (state) => {
     return {
         movies: state.movies.all,
         page: state.movies.page,
+        genres: state.genres.all,
         isFetched: state.movies.isFetched
     };
 };

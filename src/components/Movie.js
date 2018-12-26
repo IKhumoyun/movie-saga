@@ -59,7 +59,7 @@ const {classes} = jss.createStyleSheet(styles).attach();
 class Movie extends Component {
     render() {
 
-        const { items } = this.props;
+        const { items, genres, isFetched } = this.props;
 
         return (
             <div className={`${classes.moviesHolder}`}>
@@ -71,6 +71,15 @@ class Movie extends Component {
                             </div>
                             <div className={classes.movieInfo}>
                                 <h3 className={classes.movieName}>{item.title}</h3>
+                                <div className="movie-genres">
+                                    {isFetched && item.genre_ids.map((id, index) => {
+                                        const item = genres.filter(genre => genre.id === id);
+                                        if(item.length)
+                                            return (
+                                                <a href="#" className="genre">{isFetched && item[0].name}</a>
+                                            )
+                                    })}
+                                </div>
                             </div>
                         </div>
                     </Link>

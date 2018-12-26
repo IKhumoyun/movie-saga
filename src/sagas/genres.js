@@ -9,8 +9,7 @@ function* loadMovieGenres() {
 
         yield put({
             type: Constants.GET_GENRES_SUCCESS,
-            payload: data.results,
-            page: data.page
+            payload: data,
         })
 
     } catch (error) {
