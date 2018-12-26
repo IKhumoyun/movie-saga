@@ -2,9 +2,10 @@ import React, {Component, Fragment} from 'react';
 import { Link } from 'react-router-dom';
 import config from '../config';
 import jss from 'jss';
+import jssNested from 'jss-nested';
 import preset from 'jss-preset-default';
 
-jss.setup(preset());
+jss.setup(preset(), jssNested());
 
 const styles = {
     movieCard: {
@@ -13,8 +14,13 @@ const styles = {
         display: 'flex',
         flexDirection: 'column',
         transition: 'all 0.5s ease',
+        backgroundColor: '#fff',
         '&:hover': {
             boxShadow: '0px 0px 15px 0px rgba(0,0,0,0.3)',
+
+            '& $movieImg': {
+                transform: 'scale(1.1)',
+            }
         }
     },
     imgHolder: {
@@ -30,14 +36,21 @@ const styles = {
         height: '100%',
         objectFit: 'cover',
         transition: 'all 0.5s ease',
-        '&:hover': {
-            transform: 'scale(1.1)',
-        }
     },
     moviesHolder: {
         display: 'flex',
         flexWrap: 'wrap',
         justifyContent: 'space-around',
+    },
+    movieName: {
+        display: 'block',
+        color: '#000',
+        textDecoration: 'none',
+        margin: '10px 0',
+        fontFamily: 'Museo100',
+    },
+    movieInfo: {
+        padding: 10,
     }
 };
 
@@ -56,7 +69,9 @@ class Movie extends Component {
                             <div className={`${classes.imgHolder}`}>
                                 <img src={`${config.API_IMAGE.small}/${item.poster_path}`} className={`${classes.movieImg}`} alt=""/>
                             </div>
-                            <h3>{item.title}</h3>
+                            <div className={classes.movieInfo}>
+                                <h3 className={classes.movieName}>{item.title}</h3>
+                            </div>
                         </div>
                     </Link>
                 ))}

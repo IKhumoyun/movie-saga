@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import {bindActionCreators} from "redux";
-import {getTopMovies} from "../actions/movies";
+import { getTopMovies } from "../actions/movies";
+import { getMovieGenres } from "../actions/genres";
 import connect from "react-redux/es/connect/connect";
 
 import Movie from '../components/Movie';
@@ -11,8 +12,9 @@ class MoviesList extends Component {
     static path = '/';
 
     componentDidMount() {
-        const { getTopMovies } = this.props;
+        const { getTopMovies, getMovieGenres } = this.props;
         getTopMovies();
+        getMovieGenres();
     }
 
     loadMore = () => {
@@ -36,7 +38,8 @@ class MoviesList extends Component {
 
 const mapDispatchToProps = (dispatch) => bindActionCreators(
     {
-        getTopMovies
+        getTopMovies,
+        getMovieGenres,
     },
     dispatch
 );
