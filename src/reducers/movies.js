@@ -2,7 +2,8 @@ import * as Constants from 'constants/movies';
 
 const initialState = {
     all: [],
-    page: 1
+    page: 1,
+    isFetched: false,
 };
 
 export default (state = initialState, action) => {
@@ -14,7 +15,7 @@ export default (state = initialState, action) => {
                     ...state.all,
                     ...action.payload
                 ],
-                page: action.page
+                isFetched: true
             }
         }
         default:

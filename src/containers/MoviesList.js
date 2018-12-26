@@ -24,11 +24,11 @@ class MoviesList extends Component {
 
     render() {
 
-        const { movies } = this.props;
+        const { movies, genres, isFetched } = this.props;
 
         return (
             <div>
-                <Movie items={movies}/>
+                <Movie items={movies} genres={genres} isFetched={isFetched}/>
 
                 <LoadMore load={this.loadMore}/>
             </div>

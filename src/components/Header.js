@@ -14,8 +14,7 @@ const styles = {
         backgroundColor: '#ffffff',
         display: 'flex',
         alignItems: 'center',
-        justifyContent: 'space-between',
-        marginBottom: 30
+        justifyContent: 'space-between'
     },
     unorderedList: {
         margin: 0,
