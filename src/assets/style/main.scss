@@ -1,0 +1,34 @@
+.news-container {
+  .news {
+    font-family: Calibri;
+    border-bottom: 1px solid #f0f0f0;
+    display: flex;
+
+    .news-img {
+      height: 200px;
+      min-height: 200px;
+      min-width: 400px;
+      width: 400px;
+      object-fit: cover;
+      padding-right: 20px;
+    }
+  }
+}
+
+.movies-container {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+
+  .movie-item {
+    width: 260px;
+
+    img.movie-img {
+      width: 250px;
+      max-width: 250px;
+      max-height: 350px;
+      height: 350px;
+      object-fit: cover;
+    }
+  }
+}
