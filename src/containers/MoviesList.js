@@ -3,12 +3,12 @@ import {bindActionCreators} from "redux";
 import {getTopMovies} from "../actions/movies";
 import connect from "react-redux/es/connect/connect";
 
-import Movie from 'components/Movie';
-import LoadMore from 'components/LoadMore';
+import Movie from '../components/Movie';
+import LoadMore from '../components/LoadMore';
 
 class MoviesList extends Component {
 
-    static path = '/movieList';
+    static path = '/';
 
     componentDidMount() {
         const { getTopMovies } = this.props;

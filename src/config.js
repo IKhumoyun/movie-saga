@@ -1,6 +1,5 @@
 const config = {
     API_ROOT: {
-        news: 'https://newsapi.org/v2/',
         movie: 'https://api.themoviedb.org/3'
     },
     API_COUNTRY: 'US',
