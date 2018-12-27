@@ -5,6 +5,7 @@ import * as Constants from '../constants/movies';
 
 function* loadMovies(action) {
     try {
+
         const {data} = yield call(api.requestMovie.get, `/movie/popular?page=${action.page}`);
 
         yield put({

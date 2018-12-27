@@ -15,6 +15,7 @@ export default (state = initialState, action) => {
                     ...state.all,
                     ...action.payload
                 ],
+                page: action.page,
                 isFetched: true
             }
         }

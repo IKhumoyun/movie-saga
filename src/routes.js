@@ -3,7 +3,7 @@ import {ConnectedRouter} from 'react-router-redux';
 import {Switch, Route} from 'react-router';
 import {createBrowserHistory} from 'history';
 
-import MovieList from 'containers/MoviesList';
+import MovieList from 'containers/MainPage';
 import ErrorPage from 'containers/ErrorPage';
 import SinglePage from 'containers/SingleMovie';
 

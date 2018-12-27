@@ -6,3 +6,17 @@ export const getMovieDetail = (id) => ({
         id
     }
 });
+
+export const getMovieTrailer = (id) => ({
+    type: Constants.GET_TRAILER_REQUEST,
+    payload: {
+        id
+    }
+});
+
+export const getMovieRec = (id) => ({
+    type: Constants.GET_REC_REQUEST,
+    payload: {
+        id
+    }
+});

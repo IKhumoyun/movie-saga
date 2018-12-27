@@ -7,7 +7,7 @@ import connect from "react-redux/es/connect/connect";
 import Movie from '../components/Movie';
 import LoadMore from '../components/LoadMore';
 
-class MoviesList extends Component {
+class MainPage extends Component {
 
     static path = '/';
 
@@ -53,4 +53,4 @@ const mapStateToProps = (state) => {
     };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(MoviesList);
+export default connect(mapStateToProps, mapDispatchToProps)(MainPage);
