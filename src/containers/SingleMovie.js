@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import { getMovieDetail, getMovieTrailer, getMovieRec } from '../actions/movie';
+import { getMovieDetail, getMovieTrailer, getMovieRec, getMovieCast } from '../actions/movie';
 import { getMovieGenres } from "../actions/genres";
 import {bindActionCreators} from "redux";
 import connect from "react-redux/es/connect/connect";
@@ -10,7 +10,7 @@ import preset from "jss-preset-default";
 import jssExpand from "jss-expand";
 
 import Trailer from '../components/Trailer';
-import Movie from "../components/Movie";
+import RecList from "../components/RecList";
 
 jss.setup(preset(), jssExpand());
 
@@ -50,7 +50,34 @@ const styles = {
         display: 'flex',
         flexWrap: 'wrap',
         justifyContent: 'space-around',
-    }
+    },
+    movieCast: {
+        display: 'flex',
+        flexWrap: 'wrap',
+        justifyContent: 'flex-start',
+    },
+    actorImg: {
+        height: 200,
+        width: 150,
+        objectFit: 'cover',
+        borderBottom: '5px solid #FE6B8B',
+    },
+    actorName: {
+        whiteSpace: 'wrap',
+        margin: 0,
+        fontSize: '16px',
+    },
+    castItem: {
+        width: 150,
+        paddingRight: 30,
+    },
+    castCharacter: {
+        whiteSpace: 'wrap',
+        color: '#4f4f4f',
+        margin: 0,
+        fontSize: '12px',
+    },
+
 
 };
 
@@ -61,17 +88,20 @@ class SingleMovie extends Component {
     static path = '/movie/:id';
 
     componentDidMount() {
-        const { match, getMovieDetail, getMovieTrailer, getMovieRec, getMovieGenres } = this.props;
+        const { match, getMovieDetail, getMovieTrailer, getMovieRec, getMovieGenres, getMovieCast } = this.props;
         getMovieDetail(match.params.id);
         getMovieTrailer(match.params.id);
         getMovieRec(match.params.id);
         getMovieGenres();
+        getMovieCast(match.params.id);
     }
 
 
     render() {
 
-        const { detail: { data, isFetched}, trailer, rec, genres } = this.props;
+        const { detail: { data, isFetched}, trailer, rec, genres, cast } = this.props;
+
+        const castCut = cast.data.slice(0,5);
 
         return (
             <div>
@@ -96,10 +126,23 @@ class SingleMovie extends Component {
                             <p className={classes.moviePlot}>{data.overview}</p>
                             <h4>Trailer:</h4>
                             <Trailer data={trailer.data} isFetched={trailer.isFetched}/>
+
+                            <h2>Cast:</h2>
+                            <div className={classes.movieCast}>
+                                {
+                                    castCut && castCut.map((item)=> (
+                                        <div className={classes.castItem}>
+                                            <img src={`https://image.tmdb.org/t/p/w185/${item.profile_path}`} alt="" className={classes.actorImg}/>
+                                            <h4 className={classes.actorName}>{item.name}</h4>
+                                            <span className={classes.castCharacter}>{item.character}</span>
+                                        </div>
+                                    ))
+                                }
+                            </div>
                         </div>
                     </div>
 
-                    <Movie items={rec.data} genres={genres} isFetched={rec.isFetched}/>
+                    <RecList items={rec.data} genres={genres} isFetched={rec.isFetched}/>
                 </div>
             </div>
 
@@ -113,6 +156,7 @@ const mapDispatchToProps = (dispatch) => bindActionCreators(
         getMovieTrailer,
         getMovieRec,
         getMovieGenres,
+        getMovieCast,
     },
     dispatch
 );
@@ -123,6 +167,7 @@ const mapStateToProps = (state) => {
         trailer: state.movie.trailer,
         rec: state.movie.rec,
         genres: state.genres.all,
+        cast: state.movie.cast,
     };
 };
 

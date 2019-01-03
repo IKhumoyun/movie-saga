@@ -1,11 +1,15 @@
 import React, {Component} from 'react';
 import { Link } from 'react-router-dom'
+import { withRouter } from 'react-router-dom';
+import {bindActionCreators} from "redux";
+import {connect} from "react-redux";
 
 import jss from "jss";
 import preset from "jss-preset-default";
 import jssExpand from 'jss-expand';
 import logo from '../assets/img/logo.svg';
 import search from '../assets/img/search.svg';
+import {loadMovieSearch} from "../actions/movies";
 
 jss.setup(preset(), jssExpand());
 
@@ -111,4 +115,18 @@ class Header extends Component {
     }
 }
 
-export default Header;
+const mapDispatchToProps = (dispatch) => bindActionCreators(
+    {
+        loadMovieSearch
+    },
+    dispatch
+);
+
+const mapStateToProps = (state) => {
+    return {
+        search_text: state.movies.search_text,
+        isFetched: state.movies.isFetched
+    };
+};
+
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(Header));

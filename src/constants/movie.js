@@ -9,3 +9,7 @@ export const GET_TRAILER_ERROR = "GET_TRAILER_ERROR";
 export const GET_REC_REQUEST = "GET_REC_REQUEST";
 export const GET_REC_SUCCESS = "GET_REC_SUCCESS";
 export const GET_REC_ERROR = "GET_REC_ERROR";
+
+export const GET_CAST_REQUEST = "GET_CAST_REQUEST";
+export const GET_CAST_SUCCESS = "GET_CAST_SUCCESS";
+export const GET_CAST_ERROR = "GET_CAST_ERROR";

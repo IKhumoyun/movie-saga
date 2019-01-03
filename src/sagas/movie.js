@@ -45,10 +45,25 @@ function* getMovieRec(action) {
     }
 }
 
+function* getMovieCast(action) {
+    try {
+        const {data} = yield call(api.requestMovie.get, `/movie/${action.payload.id}/credits`);
+
+        yield put({
+            type: Constants.GET_CAST_SUCCESS,
+            payload: data
+        })
+
+    } catch (error) {
+
+    }
+}
+
 export default function* root() {
     yield [
         takeLatest(Constants.LOAD_DETAIL_REQUEST, loadMovieDetail),
         takeLatest(Constants.GET_TRAILER_REQUEST, getMovieTrailer),
         takeLatest(Constants.GET_REC_REQUEST, getMovieRec),
+        takeLatest(Constants.GET_CAST_REQUEST, getMovieCast),
     ]
 }

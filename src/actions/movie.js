@@ -20,3 +20,10 @@ export const getMovieRec = (id) => ({
         id
     }
 });
+
+export const getMovieCast = (id) => ({
+    type: Constants.GET_CAST_REQUEST,
+    payload: {
+        id
+    }
+});

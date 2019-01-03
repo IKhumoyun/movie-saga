@@ -12,7 +12,11 @@ const initialState = {
     rec: {
         data: [],
         isFetched: false,
-    }
+    },
+    cast: {
+        data: [],
+        isFetched: false,
+    },
 };
 
 export default (state = initialState, action) => {
@@ -58,6 +62,24 @@ export default (state = initialState, action) => {
                 ...state,
                 rec: {
                     data: action.payload.results,
+                    isFetched: true,
+                }
+            }
+        }
+        case Constants.GET_CAST_REQUEST: {
+            return {
+                ...state,
+                cast: {
+                    ...state.cast,
+                    isFetched: false,
+                }
+            }
+        }
+        case Constants.GET_CAST_SUCCESS: {
+            return {
+                ...state,
+                cast: {
+                    data: action.payload.cast,
                     isFetched: true,
                 }
             }
