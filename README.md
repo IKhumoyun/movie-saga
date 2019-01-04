@@ -2,7 +2,9 @@
 
 This is the second version of Movie app made by using [TMDB API](https://developers.themoviedb.org/3). This version was made using Redux Saga instead of Redux Thunk that was used before. 
 
-**You can see previous version using this [link](https://github.com/IKhumoyun/movie-tmdb)**
+**Deployed version of this can be seen [here](https://ikhumoyun.github.io)**
+
+**Previous version is in this [link](https://github.com/IKhumoyun/movie-tmdb)**
 
 ### `npm start`
 
